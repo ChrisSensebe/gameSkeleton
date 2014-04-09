@@ -2,6 +2,8 @@ var PRELOADTOTAL = 2;
 var preloadCount = 0;
 
 var touches = {};
+var menuText = [];
+var inMenu = true;
 
 var objJoueur;
 var imgJoueur = new Image();
@@ -33,9 +35,9 @@ function startGame(){
 
 function preloadAssets(){
 	imgJoueur.onload = preloadUpdate();
-	//imgJoueur.src =;
+	imgJoueur.src = "defaultJoueur.png";
 	imgBackground.onload = preloadUpdate();
-	//imgBarriere.src =;
+	imgBarriere.src = "defaultBackground.png";
 }
 
 //verif que tt est chargé
@@ -52,13 +54,9 @@ function launchGame(){
 
 	objJoueur = new createjs.Bitmap(imgJoueur);
 	stage.addChild(objJoueur);
-	/*objJoueur.x = ;
-	objJoueur.y = ;*/
 
 	objBackground = new createjs.Bitmap(imgBackground);
 	stage.addChild(objBackground);
-	/*objBarriere.x = ;
-	objBarriere.y = ;*/
 
 	HUDTexte = new createjs.Text("HUD", "24px Arial", "#000000");
 	scoreTexte.x = 8;
