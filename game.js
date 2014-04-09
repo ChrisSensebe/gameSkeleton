@@ -54,10 +54,10 @@ function launchGame(){
 	objBackground = new createjs.Bitmap(imgBackground);
 	stage.addChild(objBackground);
 
-	HUDTexte = new createjs.Text("HUD", "24px Arial", "#000000");
-	scoreTexte.x = 8;
-	scoreTexte.y = 450;
-	stage.addChild(HUDTexte);
+	HUDText = new createjs.Text("HUD", "24px Arial", "#000000");
+	HUDText.x = 8;
+	HUDText.y = 450;
+	stage.addChild(HUDText);
 
 	menuText = new createjs.Text("In menu", "24px Arial", "#000000");
 	menuText.textAlign = "center";
