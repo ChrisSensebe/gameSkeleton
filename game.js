@@ -2,12 +2,13 @@ var PRELOADTOTAL = 2;
 var preloadCount = 0;
 
 var touches = {};
-var menuText = [];
+var HUDText;
+var menuText;
 var inMenu = true;
 
 var objJoueur;
 var imgJoueur = new Image();
-var objBackground ;
+var objBackground;
 var imgBackground = new Image();
 
 function loadDefault(){
@@ -37,7 +38,7 @@ function preloadAssets(){
 	imgJoueur.onload = preloadUpdate();
 	imgJoueur.src = "defaultJoueur.png";
 	imgBackground.onload = preloadUpdate();
-	imgBarriere.src = "defaultBackground.png";
+	imgBackground.src = "defaultBackground.png";
 }
 
 //verif que tt est chargé
@@ -62,6 +63,8 @@ function launchGame(){
 	scoreTexte.x = 8;
 	scoreTexte.y = 450;
 	stage.addChild(HUDTexte);
+
+	
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick",mainTick);
