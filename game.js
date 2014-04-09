@@ -1,11 +1,9 @@
 var PRELOADTOTAL = 2;
 var preloadCount = 0;
-
 var touches = {};
 var HUDText;
 var menuText;
 var inMenu = true;
-
 var objJoueur;
 var imgJoueur = new Image();
 var objBackground;
@@ -81,7 +79,25 @@ function newGame(){
 	objJoueur.visible = false;	
 }
 
-//Tick du jeu
+//fin de partie.
+function endGame(){
+	inMenu = true;	
+	menuText.visible = true;
+	objJoueur.visible = false;
+	HUDText.visible = false;
+}
+
+//Tick du jeu.
 function mainTick(){
-	//the game
+	if(inMenu){
+		/*if(condition pour demarrer){
+			newGame();
+		}*/
+	}
+	else{
+		/*code du jeu
+		if(condition de fin){
+			endGame();
+		}*/
+	}
 } 
