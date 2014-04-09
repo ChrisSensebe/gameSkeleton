@@ -63,6 +63,7 @@ function launchGame(){
 	menuText.textAlign = "center";
 	menuText.x = 320;
 	menuText.Y = 200;
+	stage.addChild(menuText);
 
 	HUDText.visible = false;
 	objJoueur.visible = false;
@@ -100,4 +101,5 @@ function mainTick(){
 			endGame();
 		}*/
 	}
+	stage.update();
 } 
