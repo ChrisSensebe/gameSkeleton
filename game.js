@@ -59,7 +59,7 @@ function launchGame(){
 	scoreTexte.y = 450;
 	stage.addChild(HUDTexte);
 
-	menuText = new createjs.Text("In menu"; "24px Arial", "#000000");
+	menuText = new createjs.Text("In menu", "24px Arial", "#000000");
 	menuText.textAlign = "center";
 	menuText.x = 320;
 	menuText.Y = 200;
