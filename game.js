@@ -11,11 +11,7 @@ var imgJoueur = new Image();
 var objBackground;
 var imgBackground = new Image();
 
-function loadDefault(){
-	//reinitialisation des variables au debut d'une nouvelle partie.
-	}
-
-//ecoute du clavier
+//ecoute du clavier.
 addEventListener("keydown",
 	function(e){
 	touches[e.keyCode] = true;
@@ -29,11 +25,12 @@ function(e){
 	delete touches[e.keyCode];
 });
 
-//demarage du jeu
+//lancement du prechargement.
 function startGame(){
 	preloadAssets();
 }
 
+//prechargement.
 function preloadAssets(){
 	imgJoueur.onload = preloadUpdate();
 	imgJoueur.src = "defaultJoueur.png";
@@ -41,7 +38,7 @@ function preloadAssets(){
 	imgBackground.src = "defaultBackground.png";
 }
 
-//verif que tt est chargé
+//lancement du jeu si prechargement fini.
 function preloadUpdate(){
 	preloadCount++;
 	if(preloadCount == PRELOADTOTAL){
@@ -49,7 +46,7 @@ function preloadUpdate(){
 	}
 }
 
-//creation des elements du jeu
+//mise en place des elements du jeu.
 function launchGame(){
 	stage = new createjs.Stage(document.getElementById("gameCanvas"));
 
@@ -64,10 +61,24 @@ function launchGame(){
 	scoreTexte.y = 450;
 	stage.addChild(HUDTexte);
 
-	
+	menuText = new createjs.Text("In menu"; "24px Arial", "#000000");
+	menuText.textAlign = "center";
+	menuText.x = 320;
+	menuText.Y = 200;
+
+	HUDText.visible = false;
+	objJoueur.visible = false;
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick",mainTick);
+}
+
+//lancement nouvelle partie + reinitialisation variables partie.
+function newGame(){
+	inMenu = false;
+	HUDText.visible = true;
+	menuText.visible = false;
+	objJoueur.visible = false;	
 }
 
 //Tick du jeu
