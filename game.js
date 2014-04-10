@@ -128,13 +128,13 @@ function mainTick(){
 		if(objJoueur.x <= -50){
 			objJoueur.x = 640;
 		}
-		if(objJoueur.x >= 640){
+		if(objJoueur.x > 640){
 			objJoueur.x = -50;
 		}
 		if(objJoueur.y <= -50){
 			objJoueur.y = 480;
 		}
-		if(objJoueur.y >= 480){
+		if(objJoueur.y > 480){
 			objJoueur.y = -50;
 		}
 		timer--;
