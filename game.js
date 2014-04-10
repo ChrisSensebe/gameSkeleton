@@ -8,6 +8,7 @@ var objJoueur;
 var imgJoueur = new Image();
 var objBackground;
 var imgBackground = new Image();
+var timer;
 
 //ecoute du clavier.
 addEventListener("keydown",
@@ -88,7 +89,8 @@ function newGame(){
 	menuText[0].visible = false;
 	menuText[1].visible = false;
 	HUDText.visible = true;
-	objJoueur.visible = true;	
+	objJoueur.visible = true;
+	timer = 300;
 }
 
 //fin de partie.
@@ -108,10 +110,22 @@ function mainTick(){
 		}
 	}
 	else{
-		/*code du jeu
-		if(condition de fin){
+		if(38 in touches){
+			objJoueur.y--;
+		}
+		if(40 in touches){
+			objJoueur.y++
+		}
+		if(39 in touches){
+			objJoueur.x++;
+		}
+		if(37 in touches){
+			objJoueur.x--;
+		}
+		if(timer == 0){
 			endGame();
-		}*/
+		}
+		timer--;
 	}
 	stage.update();
 } 
