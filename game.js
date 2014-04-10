@@ -59,10 +59,10 @@ function launchGame(){
 	HUDText.y = 450;
 	stage.addChild(HUDText);
 
-	menuText = new createjs.Text("In menu", "24px Arial", "#000000");
+	menuText = new createjs.Text("Menu", "36px Arial", "#000000");
 	menuText.textAlign = "center";
 	menuText.x = 320;
-	menuText.Y = 200;
+	menuText.y = 150;
 	stage.addChild(menuText);
 
 	HUDText.visible = false;
