@@ -90,7 +90,7 @@ function newGame(){
 	menuText[1].visible = false;
 	HUDText.visible = true;
 	objJoueur.visible = true;
-	timer = 300;
+	timer = 600;
 }
 
 //fin de partie.
@@ -124,6 +124,18 @@ function mainTick(){
 		}
 		if(timer == 0){
 			endGame();
+		}
+		if(objJoueur.x <= -50){
+			objJoueur.x = 640;
+		}
+		if(objJoueur.x >= 640){
+			objJoueur.x = -50;
+		}
+		if(objJoueur.y <= -50){
+			objJoueur.y = 480;
+		}
+		if(objJoueur.y >= 480){
+			objJoueur.y = -50;
 		}
 		timer--;
 		HUDText.text = "End game in : " + Math.round(timer/30) + " s";
