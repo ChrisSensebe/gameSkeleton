@@ -2,7 +2,7 @@ var PRELOADTOTAL = 2;
 var preloadCount = 0;
 var touches = {};
 var HUDText;
-var menuText;
+var menuText = [];
 var inMenu = true;
 var objJoueur;
 var imgJoueur = new Image();
@@ -59,11 +59,19 @@ function launchGame(){
 	HUDText.y = 450;
 	stage.addChild(HUDText);
 
-	menuText = new createjs.Text("Menu", "36px Arial", "#000000");
-	menuText.textAlign = "center";
-	menuText.x = 320;
-	menuText.y = 150;
-	stage.addChild(menuText);
+	for(var i=0;i<2;i++){
+		menuText[i] = new createjs.Text("", "36px Arial", "#000000");
+		menuText[i].textAlign = "center";
+		menuText[i].x = 320;
+		menuText[i].y = 150 + i*48;
+		if(i==0){
+			menuText[i].text = "Menu";
+		}
+		else{
+			menuText[i].text = "Press space to play"
+		}
+		stage.addChild(menuText[i]);
+	}
 
 	HUDText.visible = false;
 	objJoueur.visible = false;
@@ -76,14 +84,16 @@ function launchGame(){
 function newGame(){
 	inMenu = false;
 	HUDText.visible = true;
-	menuText.visible = false;
+	menuText[0].visible = false;
+	menuText[1].visible = false;
 	objJoueur.visible = false;	
 }
 
 //fin de partie.
 function endGame(){
 	inMenu = true;	
-	menuText.visible = true;
+	menuText[0].visible = true;
+	menuText[1].visible = true;
 	objJoueur.visible = false;
 	HUDText.visible = false;
 }
@@ -91,9 +101,9 @@ function endGame(){
 //Tick du jeu.
 function mainTick(){
 	if(inMenu){
-		/*if(condition pour demarrer){
+		if(32 in touches){
 			newGame();
-		}*/
+		}
 	}
 	else{
 		/*code du jeu
