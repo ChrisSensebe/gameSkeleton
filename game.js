@@ -111,21 +111,22 @@ function mainTick(){
 	}
 	else{
 		if(38 in touches){
-			objJoueur.y--;
+			objJoueur.y-=2;
 		}
 		if(40 in touches){
-			objJoueur.y++
+			objJoueur.y+=2;
 		}
 		if(39 in touches){
-			objJoueur.x++;
+			objJoueur.x+=2;
 		}
 		if(37 in touches){
-			objJoueur.x--;
+			objJoueur.x-=2;
 		}
 		if(timer == 0){
 			endGame();
 		}
 		timer--;
+		HUDText.text = "End game in : " + Math.round(timer/30) + " s";
 	}
 	stage.update();
 } 
