@@ -48,13 +48,15 @@ function preloadUpdate(){
 function launchGame(){
 	stage = new createjs.Stage(document.getElementById("gameCanvas"));
 
-	objJoueur = new createjs.Bitmap(imgJoueur);
-	stage.addChild(objJoueur);
-
 	objBackground = new createjs.Bitmap(imgBackground);
 	stage.addChild(objBackground);
 
-	HUDText = new createjs.Text("HUD", "24px Arial", "#000000");
+	objJoueur = new createjs.Bitmap(imgJoueur);
+	objJoueur.x = 300;
+	objJoueur.y = 220;
+	stage.addChild(objJoueur);
+
+	HUDText = new createjs.Text("End game in : ", "24px Arial", "#000000");
 	HUDText.x = 8;
 	HUDText.y = 450;
 	stage.addChild(HUDText);
@@ -83,10 +85,10 @@ function launchGame(){
 //lancement nouvelle partie + reinitialisation variables partie.
 function newGame(){
 	inMenu = false;
-	HUDText.visible = true;
 	menuText[0].visible = false;
 	menuText[1].visible = false;
-	objJoueur.visible = false;	
+	HUDText.visible = true;
+	objJoueur.visible = true;	
 }
 
 //fin de partie.
