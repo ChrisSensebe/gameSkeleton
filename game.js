@@ -9,6 +9,7 @@ var imgJoueur = new Image();
 var objBackground;
 var imgBackground = new Image();
 var timer;
+var paused;
 
 //ecoute du clavier.
 addEventListener("keydown",
@@ -28,6 +29,13 @@ function(e){
 function startGame(){
 	preloadAssets();
 }
+
+addEventListener("keypress",
+function(e){
+	if(e.keyCode == 32){
+		paused = !paused;
+	}
+})
 
 //prechargement.
 function preloadAssets(){
@@ -91,6 +99,7 @@ function newGame(){
 	HUDText.visible = true;
 	objJoueur.visible = true;
 	timer = 600;
+	paused = false;
 }
 
 //fin de partie.
@@ -110,6 +119,9 @@ function mainTick(){
 		}
 	}
 	else{
+		if(paused){
+			createjs.Ticker.SetPaused(true);
+		}
 		if(38 in touches){
 			objJoueur.y-=2;
 		}
