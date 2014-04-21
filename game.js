@@ -154,8 +154,8 @@ function mainTick(){
 			createjs.Ticker.SetPaused(true);
 		}
 		inputs();
-		timer--;
 		HUDText.text = "End game in : " + Math.round(timer/30) + " s";
+		timer--;
 	}
 	stage.update();
 } 
