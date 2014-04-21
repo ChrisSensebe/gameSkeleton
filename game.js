@@ -111,6 +111,34 @@ function endGame(){
 	HUDText.visible = false;
 }
 
+//actions du joueur
+function inputs(){
+	if(37 in touches){
+		objJoueur.x -=2;
+		if (objJoueur.x <= -50) {
+			objJoueur.x = 640;
+		}
+	}
+	if(38 in touches){
+		objJoueur.y -=2;
+		if (objJoueur.y <= -50) {
+			objJoueur.y = 480;
+		}
+	}
+	if(39 in touches){
+		objJoueur.x += 2;
+		if(objJoueur.x > 640){
+			objJoueur.x = -50;
+		}
+	}
+	if(40 in touches){
+		objJoueur.y += 2;
+		if(objJoueur.y > 480){
+			objJoueur.y = -50;
+		}
+	}
+}
+
 //Tick du jeu.
 function mainTick(){
 	if(inMenu){
@@ -119,36 +147,13 @@ function mainTick(){
 		}
 	}
 	else{
+		if (timer == 0) {
+			endGame();
+		}
 		if(paused){
 			createjs.Ticker.SetPaused(true);
 		}
-		if(38 in touches){
-			objJoueur.y-=2;
-		}
-		if(40 in touches){
-			objJoueur.y+=2;
-		}
-		if(39 in touches){
-			objJoueur.x+=2;
-		}
-		if(37 in touches){
-			objJoueur.x-=2;
-		}
-		if(timer == 0){
-			endGame();
-		}
-		if(objJoueur.x <= -50){
-			objJoueur.x = 640;
-		}
-		if(objJoueur.x > 640){
-			objJoueur.x = -50;
-		}
-		if(objJoueur.y <= -50){
-			objJoueur.y = 480;
-		}
-		if(objJoueur.y > 480){
-			objJoueur.y = -50;
-		}
+		inputs();
 		timer--;
 		HUDText.text = "End game in : " + Math.round(timer/30) + " s";
 	}
