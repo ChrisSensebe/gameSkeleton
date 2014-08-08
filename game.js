@@ -139,6 +139,13 @@ function inputs(){
 	}
 }
 
+//box level collision detection
+function boxCollisionDetection (box1, box2) {
+	var widthCollide = (box1.x > (box2.x-box1.width) && box1.x < (box2.x+box2.width));
+	var heightCollide = (box1.y > (box2.y-box1.height) && box1.y < (box2.y+box2.height));
+	return (widthCollide && heightCollide);
+}
+
 //Tick du jeu.
 function mainTick(){
 	if(inMenu){
