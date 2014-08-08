@@ -11,7 +11,7 @@ var imgBackground = new Image();
 var timer;
 var paused;
 
-//ecoute du clavier.
+//event listeners
 addEventListener("keydown",
 	function(e){
 	touches[e.keyCode] = true;
@@ -25,7 +25,7 @@ function(e){
 	delete touches[e.keyCode];
 });
 
-//lancement du prechargement.
+//satrting game engine
 function startGame(){
 	preloadAssets();
 }
@@ -37,7 +37,7 @@ function(e){
 	}
 })
 
-//prechargement.
+//preloading
 function preloadAssets(){
 	imgJoueur.onload = preloadUpdate();
 	imgJoueur.src = "defaultJoueur.png";
@@ -45,7 +45,7 @@ function preloadAssets(){
 	imgBackground.src = "defaultBackground.png";
 }
 
-//lancement du jeu si prechargement fini.
+//game launch after preloading is done
 function preloadUpdate(){
 	preloadCount++;
 	if(preloadCount == PRELOADTOTAL){
@@ -53,7 +53,7 @@ function preloadUpdate(){
 	}
 }
 
-//mise en place des elements du jeu.
+//adding game elements to stage
 function launchGame(){
 	stage = new createjs.Stage(document.getElementById("gameCanvas"));
 
@@ -91,7 +91,7 @@ function launchGame(){
 	createjs.Ticker.addEventListener("tick",mainTick);
 }
 
-//lancement nouvelle partie + reinitialisation variables partie.
+//launching new game session
 function newGame(){
 	inMenu = false;
 	menuText[0].visible = false;
@@ -102,7 +102,7 @@ function newGame(){
 	paused = false;
 }
 
-//fin de partie.
+//ending game session
 function endGame(){
 	inMenu = true;	
 	menuText[0].visible = true;
@@ -111,7 +111,7 @@ function endGame(){
 	HUDText.visible = false;
 }
 
-//actions du joueur
+//player inputs
 function inputs(){
 	if(37 in touches){
 		objJoueur.x -=2;
@@ -146,7 +146,7 @@ function boxCollisionDetection (box1, box2) {
 	return (widthCollide && heightCollide);
 }
 
-//Tick du jeu.
+//game tick
 function mainTick(){
 	if(inMenu){
 		if(32 in touches){
