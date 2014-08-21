@@ -146,6 +146,37 @@ function boxCollisionDetection (box1, box2) {
 	return (widthCollide && heightCollide);
 }
 
+//pixel level collision detection
+function pixelLevelCollision(box1,box2){
+
+	var collisionBoxX = box1.x < box2.x ? box2.x : box1.x;
+	var collisionBoxY = box1.y < box2.y ? box2.y : box1.y;
+	var xMax = (box1.width + box1.x) < (box2.width + box2.x) ? (box1.width + box1.x) : (box2.width + box2.x);
+	var collisionBoxWidth = xMax - collisionBoxX;
+	var yMax = (box1.height + box1.y) < (box2.height + box2.y) ? (box1.height + box1.y) : (box2.height + box2.y);
+	var collisionBoxHeight = yMax - collisionBoxY;
+
+	var canvas1 = document.getElementById("gameCanvas");
+	var context1 = canvas1.getContext('2d');
+	context1.clearRect (0 ,0 ,640 ,480 );
+	context1.drawImage(box1.image, box1.x, box1.y);
+	var box1Data = context1.getImageData(collisionBoxX, collisionBoxY, collisionBoxWidth, collisionBoxHeight).data;
+
+	var canvas2 = document.getElementById("gameCanvas");
+	var context2 = canvas2.getContext('2d');
+	context2.clearRect (0 ,0 ,640 ,480 );
+	context2.drawImage(box2.image, box2.x, box2.y);
+	var box2Data = context2.getImageData(collisionBoxX, collisionBoxY, collisionBoxWidth, collisionBoxHeight).data;
+
+	for (var i = 3; i < box1Data.length; i += 4) {
+		if (box1Data[i]>0 && box2Data[i]>0) {
+			return true;
+		};
+	};
+
+	return false;
+}
+
 //game tick
 function mainTick(){
 	if(inMenu){
